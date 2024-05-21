@@ -41,7 +41,10 @@ struct MyToDosApp: App {
         // Hide all tips define in the app
 //        Tips.hideAllTipsForTesting()
 
-        try? Tips.configure()
+        try? Tips.configure([
+            .datastoreLocation(.applicationDefault),
+            .displayFrequency(.daily)
+        ])
     }
 
 }

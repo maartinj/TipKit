@@ -8,6 +8,8 @@
 // Subscribe on YouTube: https://youTube.com/@StewartLynch
 // Buy me a ko-fi:  https://ko-fi.com/StewartLynch
 
+// Link: https://www.youtube.com/watch?v=jcn6tdofUVk&ab_channel=StewartLynch
+
 
 import SwiftUI
 import TipKit

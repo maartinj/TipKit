@@ -13,7 +13,8 @@ struct SwipeActionTip: Tip {
 
     var options: [TipOption] {
         [
-            Tips.MaxDisplayCount(1)
+            Tips.MaxDisplayCount(1),
+            Tips.IgnoresDisplayFrequency(true)
         ]
     }
     var title: Text {
