@@ -16,6 +16,9 @@ struct ToDoListView: View {
     @State private var newToDoText = ""
     @State private var newToDoAlert = false
     @FocusState var focusedField: Bool?
+
+    let createToDoTip = CreateToDoTip()
+
     var body: some View {
         @Bindable var dataStore = dataStore
         NavigationStack {
@@ -84,11 +87,12 @@ struct ToDoListView: View {
                     } label: {
                         Image(systemName: "plus.circle.fill")
                     }
+                    .popoverTip(createToDoTip, arrowEdge: .top)
                 }
             }
         }
         .sheet(isPresented: $newToDoAlert) {
-            NewToDoView(dataStore: dataStore)
+            NewToDoView(dataStore: dataStore, createToDoTip: createToDoTip)
                 .presentationDetents([.medium])
         }
         .alert("File Error",

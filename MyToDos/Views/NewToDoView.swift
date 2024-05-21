@@ -15,6 +15,9 @@ struct NewToDoView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var newToDoText: String = ""
     @Bindable var dataStore: DataStore
+
+    let createToDoTip: CreateToDoTip
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -27,6 +30,7 @@ struct NewToDoView: View {
                         if !newToDoText.isEmpty {
                             let newToDo = ToDo(name: newToDoText)
                             dataStore.addToDo(newToDo)
+                            createToDoTip.invalidate(reason: .actionPerformed)
                             newToDoText = ""
                         }
                         dismiss()
@@ -53,6 +57,7 @@ struct NewToDoView: View {
 
 #Preview {
     NewToDoView(
-        dataStore: DataStore()
+        dataStore: DataStore(),
+        createToDoTip: CreateToDoTip()
     )
 }
