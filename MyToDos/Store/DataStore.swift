@@ -23,6 +23,11 @@ class DataStore {
         }
     }
     var filteredToDos: [ToDo] = []
+
+    var completedToDosCount: Int {
+        toDos.filter {$0.completed}.count
+    }
+
     @ObservationIgnored
     var forPreview: Bool
     init(forPreview: Bool = false) {

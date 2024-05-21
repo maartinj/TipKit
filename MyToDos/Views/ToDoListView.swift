@@ -20,12 +20,18 @@ struct ToDoListView: View {
 
     let createToDoTip = CreateToDoTip()
     let swipeActionTip = SwipeActionTip()
+    let completionToDeleteTip = CompletionToDeleteTip()
 
     var body: some View {
         @Bindable var dataStore = dataStore
         NavigationStack {
             Group {
                 if !dataStore.filteredToDos.isEmpty {
+                    TipView(completionToDeleteTip, arrowEdge: .bottom)
+                        .tipBackground(.red.opacity(0.2))
+                        .tint(.red)
+                        .padding()
+
                     List() {
                         TipView(swipeActionTip)
                         ForEach($dataStore.filteredToDos) { $toDo in
@@ -55,6 +61,9 @@ struct ToDoListView: View {
                                     Button {
                                         toDo.completed.toggle()
                                         dataStore.updateToDo(toDo)
+                                        if dataStore.completedToDosCount >= 3 {
+                                            CompletionToDeleteTip.reachedThresholdParameter = true
+                                        }
                                     } label: {
                                         Text(toDo.completed ? "Remove Completion" : "Completed")
                                     }.tint(.teal)
@@ -62,6 +71,11 @@ struct ToDoListView: View {
                         }
                     }
                     .listStyle(.insetGrouped)
+                    .onChange(of: dataStore.completedToDosCount) { oldValue, newValue in
+                        if oldValue >= 3 && newValue < 3 {
+                            completionToDeleteTip.invalidate(reason: .actionPerformed)
+                        }
+                    }
                 } else {
                     if dataStore.toDos.isEmpty {
                         ContentUnavailableView {

@@ -28,6 +28,19 @@ struct MyToDosApp: App {
     init() {
         // Purge all TipKit related data.
 //            try? Tips.resetDatastore()
+
+        // Show some tips but not all
+//        Tips.showTipsForTesting([CompletionToDeleteTip.self])
+
+        // Hide some tips but not all
+//        Tips.hideTipsForTesting([CreateToDoTip.self])
+
+        // Show all defined tips in the app.
+//        Tips.showAllTipsForTesting()
+
+        // Hide all tips define in the app
+//        Tips.hideAllTipsForTesting()
+
         try? Tips.configure()
     }
 
