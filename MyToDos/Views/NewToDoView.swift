@@ -17,6 +17,7 @@ struct NewToDoView: View {
     @Bindable var dataStore: DataStore
 
     let createToDoTip: CreateToDoTip
+    let swipeActionTip: SwipeActionTip
 
     var body: some View {
         NavigationStack {
@@ -32,6 +33,9 @@ struct NewToDoView: View {
                             dataStore.addToDo(newToDo)
                             createToDoTip.invalidate(reason: .actionPerformed)
                             newToDoText = ""
+                            Task {
+                                await SwipeActionTip.swipeActionEvent.donate()
+                            }
                         }
                         dismiss()
                     }.disabled(newToDoText.isEmpty)
@@ -58,6 +62,7 @@ struct NewToDoView: View {
 #Preview {
     NewToDoView(
         dataStore: DataStore(),
-        createToDoTip: CreateToDoTip()
+        createToDoTip: CreateToDoTip(),
+        swipeActionTip: SwipeActionTip()
     )
 }

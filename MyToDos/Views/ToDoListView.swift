@@ -10,6 +10,7 @@
 
 
 import SwiftUI
+import TipKit
 
 struct ToDoListView: View {
     @Environment(DataStore.self) var dataStore
@@ -18,6 +19,7 @@ struct ToDoListView: View {
     @FocusState var focusedField: Bool?
 
     let createToDoTip = CreateToDoTip()
+    let swipeActionTip = SwipeActionTip()
 
     var body: some View {
         @Bindable var dataStore = dataStore
@@ -25,6 +27,7 @@ struct ToDoListView: View {
             Group {
                 if !dataStore.filteredToDos.isEmpty {
                     List() {
+                        TipView(swipeActionTip)
                         ForEach($dataStore.filteredToDos) { $toDo in
                             TextField(toDo.name, text: $toDo.name)
                                 .font(.title3)
@@ -92,7 +95,7 @@ struct ToDoListView: View {
             }
         }
         .sheet(isPresented: $newToDoAlert) {
-            NewToDoView(dataStore: dataStore, createToDoTip: createToDoTip)
+            NewToDoView(dataStore: dataStore, createToDoTip: createToDoTip, swipeActionTip: swipeActionTip)
                 .presentationDetents([.medium])
         }
         .alert("File Error",
