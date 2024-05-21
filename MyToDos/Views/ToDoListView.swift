@@ -14,6 +14,8 @@ import TipKit
 
 struct ToDoListView: View {
     @Environment(DataStore.self) var dataStore
+    @Environment(\.openURL) private var openURL
+
     @State private var newToDoText = ""
     @State private var newToDoAlert = false
     @FocusState var focusedField: Bool?
@@ -21,6 +23,7 @@ struct ToDoListView: View {
     let createToDoTip = CreateToDoTip()
     let swipeActionTip = SwipeActionTip()
     let completionToDeleteTip = CompletionToDeleteTip()
+    let filterTip = FilterTip()
 
     var body: some View {
         @Bindable var dataStore = dataStore
@@ -31,6 +34,11 @@ struct ToDoListView: View {
                         .tipBackground(.red.opacity(0.2))
                         .tint(.red)
                         .padding()
+                    TipView(filterTip, arrowEdge: .bottom) { action in
+                        if action.id == "learn-more" {
+                            openURL(URL(string: "https://www.createchsol.com/tutorials")!)
+                        }
+                    }
 
                     List() {
                         TipView(swipeActionTip)
@@ -87,6 +95,9 @@ struct ToDoListView: View {
                         ContentUnavailableView.search
                     }
                 }
+            }
+            .task {
+                await FilterTip.showFilterTipEvent.donate()
             }
             .navigationTitle("My ToDos")
             .toolbar {

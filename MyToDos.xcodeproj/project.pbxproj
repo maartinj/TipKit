@@ -20,6 +20,7 @@
 		E4CE18A22BFC2546001480C8 /* CreateToDoTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE18A12BFC2546001480C8 /* CreateToDoTip.swift */; };
 		E4CE18A72BFC32E1001480C8 /* SwipeActionTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE18A62BFC32E1001480C8 /* SwipeActionTip.swift */; };
 		E4CE18A92BFC386F001480C8 /* CompletionToDeleteTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE18A82BFC386F001480C8 /* CompletionToDeleteTip.swift */; };
+		E4CE18AB2BFC3D82001480C8 /* FilterTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE18AA2BFC3D82001480C8 /* FilterTip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		E4CE18A12BFC2546001480C8 /* CreateToDoTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateToDoTip.swift; sourceTree = "<group>"; };
 		E4CE18A62BFC32E1001480C8 /* SwipeActionTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionTip.swift; sourceTree = "<group>"; };
 		E4CE18A82BFC386F001480C8 /* CompletionToDeleteTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionToDeleteTip.swift; sourceTree = "<group>"; };
+		E4CE18AA2BFC3D82001480C8 /* FilterTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				E4CE18A12BFC2546001480C8 /* CreateToDoTip.swift */,
 				E4CE18A62BFC32E1001480C8 /* SwipeActionTip.swift */,
 				E4CE18A82BFC386F001480C8 /* CompletionToDeleteTip.swift */,
+				E4CE18AA2BFC3D82001480C8 /* FilterTip.swift */,
 			);
 			path = Tips;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				BB5DA5152A91622E002AC84E /* DataStore.swift in Sources */,
 				BB5DA5102A9161EC002AC84E /* ToDo.swift in Sources */,
+				E4CE18AB2BFC3D82001480C8 /* FilterTip.swift in Sources */,
 				BB5DA5002A9160D3002AC84E /* ToDoListView.swift in Sources */,
 				BB2EFED72A9D40DE0000BBD6 /* NewToDoView.swift in Sources */,
 				BB5DA5122A916204002AC84E /* ToDoError.swift in Sources */,
